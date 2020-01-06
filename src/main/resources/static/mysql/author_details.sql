@@ -1,5 +1,6 @@
 CREATE TABLE `author_details` (
   `author_details_id` bigint(10) unsigned NOT NULL AUTO_INCREMENT,
+  `portrait` blob,
   `about` text COLLATE utf8mb4_unicode_ci,
   `author_id` bigint(10) unsigned DEFAULT NULL,
   `user_id` bigint(10) unsigned DEFAULT NULL,

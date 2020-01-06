@@ -1,5 +1,6 @@
 CREATE TABLE `book_details` (
   `book_details_id` bigint(10) unsigned NOT NULL AUTO_INCREMENT,
+  `cover` blob,
   `number_of_pages` int(5) unsigned DEFAULT NULL,
   `plot` text COLLATE utf8mb4_unicode_ci,
   `characters` text COLLATE utf8mb4_unicode_ci,
