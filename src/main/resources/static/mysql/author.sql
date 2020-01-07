@@ -6,5 +6,8 @@ CREATE TABLE `author` (
   `birth_year` int(4) DEFAULT NULL,
   `death_year` int(4) DEFAULT NULL,
   `language_id` int(3) unsigned DEFAULT NULL,
-  PRIMARY KEY (`author_id`)
+  PRIMARY KEY (`author_id`),
+  UNIQUE KEY `author_id_UNIQUE` (`author_id`),
+  KEY `author_language_fk_idx` (`language_id`),
+  CONSTRAINT `author_language_fk` FOREIGN KEY (`language_id`) REFERENCES `language` (`language_id`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
