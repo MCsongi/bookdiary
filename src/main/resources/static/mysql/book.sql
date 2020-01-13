@@ -6,6 +6,9 @@ CREATE TABLE `book` (
   `start_year` int(4) DEFAULT NULL,
   `end_year` int(4) DEFAULT NULL,
   `translation` tinyint(1) unsigned NOT NULL,
+  `language_id` int(3) unsigned DEFAULT NULL,
   PRIMARY KEY (`book_id`),
-  UNIQUE KEY `book_id_UNIQUE` (`book_id`)
+  UNIQUE KEY `book_id_UNIQUE` (`book_id`),
+  KEY `book_language_fk_idx` (`language_id`),
+  CONSTRAINT `book_language_fk` FOREIGN KEY (`language_id`) REFERENCES `language` (`language_id`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
