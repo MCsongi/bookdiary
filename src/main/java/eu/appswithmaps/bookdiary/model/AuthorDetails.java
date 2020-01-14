@@ -13,4 +13,12 @@ public @Data class AuthorDetails {
 	private Blob portrait;
 	@Column(name = "about")
 	private String about;
+	
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private Author author;
+    
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User userAuthorDetails;
 }

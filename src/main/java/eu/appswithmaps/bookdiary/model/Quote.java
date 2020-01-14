@@ -10,4 +10,8 @@ public @Data class Quote {
 	private Long quoteId;
 	@Column(name = "quote_body")
 	private String quoteBody;
+	
+	@ManyToOne
+    @JoinColumn(name = "book_details_id")
+	private BookDetails bookDetail;
 }

@@ -1,6 +1,7 @@
 package eu.appswithmaps.bookdiary.model;
 
 import java.time.LocalDate;
+import java.util.Collection;
 import javax.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
@@ -32,4 +33,16 @@ public @Data class User {
 	@ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
+	
+    @OneToOne(mappedBy = "userAuthorDetails", cascade = CascadeType.ALL)
+    private AuthorDetails authorDetails;
+	
+    @OneToOne(mappedBy = "userBookDetails", cascade = CascadeType.ALL)
+    private BookDetails bookDetails;
+    
+    @ManyToMany
+    @JoinTable(name = "user_book",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "book_id")})
+    private Collection<Book> userBooks;
 }

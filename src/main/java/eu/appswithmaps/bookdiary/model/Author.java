@@ -1,5 +1,7 @@
 package eu.appswithmaps.bookdiary.model;
 
+import java.util.Collection;
+
 import javax.persistence.*;
 import lombok.Data;
 
@@ -21,5 +23,11 @@ public @Data class Author {
 	
 	@ManyToOne
     @JoinColumn(name = "language_id")
-	private Language language;
+	private Language authorLanguage;
+	
+    @OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
+    private Collection<AuthorDetails> authorDetails;
+    
+    @ManyToMany(mappedBy = "bookAuthors")
+    private Collection<Book> authorBooks;
 }

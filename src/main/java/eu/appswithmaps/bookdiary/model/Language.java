@@ -16,6 +16,9 @@ public @Data class Language {
 	@Column(name = "iso_code")
 	private char isoCode;
 	
-	@OneToMany(mappedBy = "language", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "authorLanguage", fetch = FetchType.EAGER)
 	private Collection<Author> authors;
+	
+	@OneToMany(mappedBy = "bookLanguage", fetch = FetchType.EAGER)
+	private Collection<Book> books;
 }

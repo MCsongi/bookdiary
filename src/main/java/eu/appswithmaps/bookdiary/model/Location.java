@@ -1,5 +1,6 @@
 package eu.appswithmaps.bookdiary.model;
 
+import java.util.Collection;
 import javax.persistence.*;
 import lombok.Data;
 
@@ -14,4 +15,7 @@ public @Data class Location {
 	private String country;
 	@Column(name = "city")
 	private String city;
+	
+    @ManyToMany(mappedBy = "bookLocations")
+    private Collection<Book> locationBooks;
 }

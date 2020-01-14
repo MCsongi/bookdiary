@@ -1,6 +1,7 @@
 package eu.appswithmaps.bookdiary.model;
 
 import java.sql.Blob;
+import java.util.Collection;
 import javax.persistence.*;
 import lombok.Data;
 
@@ -21,4 +22,16 @@ public @Data class BookDetails {
 	private int readYear;
 	@Column(name = "read_times")
 	private int readTimes;
+	
+	@OneToMany(mappedBy = "bookDetail", fetch = FetchType.EAGER)
+	private Collection<Quote> quotes;
+	
+    @ManyToOne
+    @JoinColumn(name = "book_id")
+    private Book book;
+    
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User userBookDetails;
+
 }
